@@ -1,0 +1,24 @@
+include (${FFMEDIA_SOURCE_DIR}/cmake/GOOGLETEST_PROPERTY.cmake)
+include (${FFMEDIA_SOURCE_DIR}/cmake/FFMPEG_PROPERTY.cmake)
+include (${FFMEDIA_SOURCE_DIR}/cmake/FFMEDIA_PROPERTY.cmake)
+
+# target
+set (OUTPUT test.out)
+
+# sources
+set (SOURCES 
+        main.cpp
+)
+
+
+#compile options
+include_directories (${GTEST_INCLUDE_DIR} ${FFMPEG_INCLUDE_DIR} ${GLOBAL_FFMEDIA_INCLUDE_DIR})
+link_directories    (${GTEST_LIBRARY_DIR} ${FFMPEG_LIBRARY_DIR} ${GLOBAL_FFMEDIA_LIB_DIR})
+
+
+add_executable(${OUTPUT} ${SOURCES})
+target_link_libraries(${OUTPUT} ${GTEST_LIBRARYS} ${FFMEDIA_LIBRARY} ${FFMPEG_LIBRARYS} ${FFMPEG_DEPENDENCY_LIBRARYS})
+
+
+install (FILES ${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT} DESTINATION ${GLOBAL_FFMEDIA_BIN_DIR})
+message (${CMAKE_CURRENT_BINARY_DIR}/${OUTPUT})

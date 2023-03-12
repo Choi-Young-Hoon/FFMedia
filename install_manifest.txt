@@ -1,0 +1,2 @@
+/home/choi/project/FFMedia/build/lib/libffmedia.a
+/home/choi/project/FFMedia/build/bin/test.out
